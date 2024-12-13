@@ -1,0 +1,9 @@
+---
+# Playbook to create /etc/hoststemp file on all webservers
+- hosts: webservers
+  tasks:
+    - name: Create /etc/hoststemp file
+      ansible.builtin.template:
+        src: hosts.j2
+        dest: /etc/hoststemp
+      become: yes  # Assuming you need root privileges to write to /etc

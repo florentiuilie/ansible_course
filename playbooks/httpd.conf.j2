@@ -1,0 +1,26 @@
+# Managed by Ansible
+# httpd.conf
+
+ServerRoot "{{ httpd_server_root }}"
+Listen {{ httpd_listen_port }}
+ServerAdmin {{ httpd_server_admin }}
+ServerName {{ httpd_server_name }}
+
+<Directory "{{ httpd_document_root }}">
+    AllowOverride None
+    Require all granted
+</Directory>
+
+DocumentRoot "{{ httpd_document_root }}"
+<IfModule dir_module>
+    DirectoryIndex {{ httpd_directory_index }}
+</IfModule>
+
+# Logging
+ErrorLog "{{ httpd_error_log }}"
+CustomLog "{{ httpd_custom_log }}" combined
+
+# Load modules
+{% for module in httpd_modules %}
+LoadModule {{ module }}
+{% endfor %}

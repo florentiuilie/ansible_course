@@ -1,0 +1,7 @@
+---
+- name: Install and Configure Apache HTTP Server
+  hosts: node3
+  become: true
+
+  roles:
+    - httpd

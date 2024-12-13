@@ -1,0 +1,19 @@
+# Parent group with two child groups
+[datacenter]
+west_servers
+east_servers
+
+# Child group 1: west_servers
+[west_servers]
+host1 ansible_host=192.168.1.10
+host2 ansible_host=192.168.1.11
+
+# Child group 2: east_servers
+[east_servers]
+host3 ansible_host=192.168.2.10
+host4 ansible_host=192.168.2.11
+
+# Variables applied to the parent group
+[datacenter:vars]
+ansible_user=admin
+ansible_ssh_private_key_file=~/.ssh/id_rsa

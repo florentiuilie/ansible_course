@@ -1,0 +1,12 @@
+# This file is managed by Ansible
+# /etc/hosts_conditional
+
+{% for host in groups['webservers'] + groups['dbservers'] %}
+{% if host in groups['webservers'] and 'ansible_default_ipv4' in hostvars[host] %}
+{{ hostvars[host]['ansible_default_ipv4']['address'] }} {{ host }}
+{% elif host in groups['dbservers'] and 'ansible_default_ipv4' in hostvars[host] %}
+{{ hostvars[host]['ansible_default_ipv4']['address'] }} {{ host }} {{ hostvars[host]['ansible_default_ipv4']['macaddress'] }}
+{% else %}
+{{ 'IP_NOT_FOUND' }} {{ host }} {{ 'MAC_NOT_FOUND' }}
+{% endif %}
+{% endfor %}

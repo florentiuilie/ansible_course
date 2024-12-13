@@ -1,0 +1,8 @@
+---
+# This playbook installs the 'vim' editor on all web servers
+- hosts: webservers
+  tasks:
+    - name: Install vim
+      ansible.builtin.yum:
+        name: vim
+        state: present

@@ -1,0 +1,9 @@
+---
+# Playbook to create /etc/hosts_conditional file on a central admin server
+- hosts: all
+  tasks:
+    - name: Generate conditional hosts file
+      ansible.builtin.template:
+        src: hosts_conditional.j2
+        dest: /etc/hosts_conditional
+      become: yes  # Assuming root privileges are needed

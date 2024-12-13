@@ -1,0 +1,42 @@
+#install a role
+ansible-galaxy role install geerlingguy.apache
+
+#install multiple roles
+1. create a file: requirements.yml
+
+2. content of requirements.yml
+   - src: geerlingguy.apache
+   - src: geerlingguy.mysql
+     version: 3.3.0
+   - src: https://github.com/your-org/custom-role.git
+     name: custom-role
+
+3. run galaxy command: ansible-galaxy role install -r requirements.yml   
+
+#create a new role
+ansible-galaxy role init my_new_role
+
+#install a collection
+ansible-galaxy collection install ansible.posix
+
+#install multiple collections
+collections:
+  - name: ansible.posix
+  - name: community.general
+    version: 5.5.0
+  - name: git+https://github.com/your-org/your-collection.git
+
+ansible-galaxy collection install -r requirements.yml
+
+
+#list installed roles
+ansible-galaxy role list
+ansible-galaxy collection list
+
+#install collections and roles to a specific path
+ansible-galaxy role install geerlingguy.apache -p ./roles
+ansible-galaxy collection install ansible.posix -p ./collections
+
+
+#verify a role
+ansible-galaxy role verify ./my_new_role

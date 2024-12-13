@@ -1,0 +1,5 @@
+app_path: /etc/ansible/files/testfile.html 
+web_user: apache
+web_group: apache
+web_service: httpd
+env: production

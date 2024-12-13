@@ -1,0 +1,11 @@
+---
+# This playbook checks the uptime of all servers
+- hosts: node1
+  tasks:
+    - name: Check uptime
+      command: uptime
+      register: result
+
+    - name: Print uptime
+      debug:
+        msg: "The uptime of the server is {{ result.stdout }}"

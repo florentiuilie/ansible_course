@@ -1,0 +1,29 @@
+---
+- name: Deploy Application
+  hosts: all
+  vars_files:
+    - /etc/ansible/vars/deployapplication.yml
+  tasks:
+    - name: Copy application files
+      ansible.builtin.copy:
+        src: "{{ app_path }}"
+        dest: "/var/www/html/app"
+        owner: "{{ web_user }}"
+        group: "{{ web_group }}"
+        mode: '0755'
+
+    - name: create directory app
+      ansible.builtin.file:
+        path: "/var/www/html/app{{ env }}"
+        state: directory
+
+    - name: Update configuration file for environment
+      ansible.builtin.template:
+        src: "app_config.{{ env }}.j2"
+        dest: "/var/www/html/app{{ env }}/config.php"
+
+    - name: Restart web service
+      ansible.builtin.service:
+        name: "{{ web_service }}"
+        state: restarted
+      when: web_service is defined

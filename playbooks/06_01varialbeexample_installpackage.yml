@@ -1,0 +1,11 @@
+---
+# Playbook that uses variables for package management
+- hosts: all
+  vars:
+    package_name: ksh
+  tasks:
+    - name: Install a package
+      ansible.builtin.yum:
+        name: "{{ package_name }}"
+        state: present
+

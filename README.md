@@ -1,2 +1,12 @@
 # ansible_course2024dec
-Cursul din data de 11 decembrie 2024
+Course from 11th of december 2024
+
+Details regarding the course
+WHAT IS ANSIBLE?
+HOW TO START
+PLAYBOOKS
+ROLES
+INVENTORY
+VARIABLES
+TEMPLATES
+ENTERPRISE TOOLS

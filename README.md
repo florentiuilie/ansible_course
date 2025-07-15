@@ -1,6 +1,3 @@
-# ansible_course2024dec
-Course from 11th of december 2024
-
 Details regarding the course
 WHAT IS ANSIBLE?
 HOW TO START
